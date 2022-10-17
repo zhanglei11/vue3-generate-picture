@@ -1,8 +1,8 @@
-# vue3 + jsqr 实现网页端扫描功能
+# vue3 + html2canvas将div生成图片
 
 #### 介绍
 
-针对ipad在web端开发的一款扫面页面
+针对打印机打印时候存在一些div无法被打印出来，只能先将其转为图片，再打印
 
 #### 软件架构
 
@@ -15,9 +15,3 @@
 3. yarn run build
 
 #### 使用说明
-
-本人做了简单的组件 [jsqr地址](https://www.npmjs.com/package/jsqr)
-
-1. ，v-if判断销毁与重建，
-2. errorCaptured 失败方法回调
-3. codeScanned 成功方法回调

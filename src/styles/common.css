@@ -1,0 +1,185 @@
+/* --------Base-------- */
+.fz12 {
+  font-size: 12px !important;
+}
+.fz14 {
+  font-size: 14px !important;
+}
+.fz16 {
+  font-size: 16px !important;
+}
+.fz18 {
+  font-size: 18px !important;
+}
+.fz20 {
+  font-size: 20px !important;
+}
+.fz22 {
+  font-size: 22px !important;
+}
+.fz24 {
+  font-size: 24px !important;
+}
+.bold {
+  font-weight: 600 !important;
+}
+body,
+legend,
+input,
+select,
+textarea,
+button {
+  font: 400 14px / 1.5 'Open Sans', 'PingFang SC', '\5FAE\8F6F\96C5\9ED1', sans-serif;
+  color: #4A4A4A;
+}
+li {
+  list-style: none;
+}
+body {
+  background: #F5F5F5;
+}
+textarea {
+  resize: none;
+}
+:focus {
+  outline: 0;
+}
+.w1000 {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #4A4A4A;
+  font-weight: 400;
+}
+.clearfix:after {
+  display: block;
+  height: 0;
+  clear: both;
+  content: '\20';
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+.mb5 {
+  margin-bottom: 5px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.mb30 {
+  margin-bottom: 30px;
+}
+.ml30 {
+  margin-left: 30px;
+}
+.pt5 {
+  padding-top: 5px;
+}
+.pr5 {
+  padding-right: 5px;
+}
+.pb5 {
+  padding-bottom: 5px;
+}
+.pl5 {
+  padding-left: 5px;
+}
+.pt10 {
+  padding-top: 10px;
+}
+.pr10 {
+  padding-right: 10px;
+}
+.pb10 {
+  padding-bottom: 10px;
+}
+.pl10 {
+  padding-left: 10px;
+}
+.pt15 {
+  padding-top: 15px;
+}
+.pr15 {
+  padding-right: 15px;
+}
+.pb15 {
+  padding-bottom: 15px;
+}
+.pl15 {
+  padding-left: 15px;
+}
+.pt20 {
+  padding-top: 20px;
+}
+.pr20 {
+  padding-right: 20px;
+}
+.pb20 {
+  padding-bottom: 20px;
+}
+.pl20 {
+  padding-left: 20px;
+}
+.pt30 {
+  padding-top: 30px;
+}
+.pr30 {
+  padding-right: 30px;
+}
+.pb30 {
+  padding-bottom: 30px;
+}
+.pl30 {
+  padding-left: 30px;
+}
