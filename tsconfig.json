@@ -26,6 +26,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
+    "src/utils/print/index.jss",
     "src/utils/index.js",
   ],
   "exclude": ["node_modules"]

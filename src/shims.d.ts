@@ -5,3 +5,5 @@ declare module '*.vue' {
   export default componentOptions
 }
 declare module 'echarts'
+declare module 'html2canvas'
+declare module 'vue3-print-nb'

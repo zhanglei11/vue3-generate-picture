@@ -1,11 +1,23 @@
 <template>
   <div class="w1000 top">
-    <div id="mainBar" ref="mainBar"></div>
+    <div>
+      <div id="mainBar" ref="mainBar"></div>
+    </div>
+    <a-row class="mt20">
+      <a-button type="primary" @click="clickImage">生成图片</a-button>
+      <!-- <a-button type="primary" @click="printImage" class="ml20">打印图片</a-button> -->
+      <a-button type="primary" v-print="printSetting" class="ml20">打印图片</a-button>
+    </a-row>
+    <a-row id="printId" class="mt20">
+      <img :src="imgSrc" width="1000" />
+    </a-row>
   </div>
 </template>
 <script setup>
 import { init } from "echarts";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
+import html2canvas from "html2canvas";
+const flage = ref(true);
 const mainBar = ref();
 const myChart = () => {
   let barChart = init(document.getElementById("mainBar"));
@@ -78,6 +90,46 @@ const myChart = () => {
   chartObserver.observe(mainBar.value);
   window.onresize = barChart.resize;
 };
+
+const  printSetting = ref( {
+        id: 'printMe',
+        beforeOpenCallback (vue) {
+          vue.pringLoading = true
+        },
+        openCallback (vue) {
+        },
+        closeCallback (vue) {
+          vue.pringLoading = false
+        }
+      })
+
+const imgSrc = ref();
+const clickImage = () => {
+  html2canvas(mainBar.value).then((canvas) => {
+    console.log(canvas);
+    let dataURL = canvas.toDataURL("image/png", 1);
+    imgSrc.value = dataURL;
+  });
+};
+
+const printImage = () => {
+  // print({
+  //   id: "printId",
+  //   extraHead: "我是打印头",
+  //   priview: false,
+  // });
+  print({
+    id: "printId",
+    beforeOpenCallback(vue) {
+      vue.pringLoading = true;
+    },
+    openCallback(vue) {},
+    closeCallback(vue) {
+      vue.pringLoading = false;
+    },
+  });
+};
+
 onMounted(() => {
   myChart();
 });
@@ -85,10 +137,12 @@ onMounted(() => {
 <style lang="less" scoped>
 .top {
   width: 1000px;
+  background: #fff;
+  padding-bottom: 20px;
 }
 #mainBar {
   border: 1px solid #54aba5;
-  width: 800px;
-  height: 76vh;
+  width: 1000px;
+  height: 500px;
 }
 </style>

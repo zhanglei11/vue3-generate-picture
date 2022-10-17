@@ -13,12 +13,14 @@
     "@ant-design/icons-vue": "^6.1.0",
     "ant-design-vue": "^3.0.0-alpha.5",
     "echarts": "^5.4.0",
+    "html2canvas": "^1.4.1",
     "less": "^4.1.2",
     "less-loader": "^6.1.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "vue": "^3.2.20",
     "vue-router": "4",
+    "vue3-print-nb": "^0.1.4",
     "yarn": "^1.22.17"
   },
   "devDependencies": {
