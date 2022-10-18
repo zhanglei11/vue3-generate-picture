@@ -26,22 +26,17 @@
     <a-row class="mt20">
       <a-button type="primary" @click="clickImage">生成图片</a-button>
     </a-row>
-    <vue-easy-print ref="printRef" tableShow style="display: none">
-      <img :src="imgSrc" width="1000" />
-    </vue-easy-print>
+    <PrintImage :divRef="divRef" ref="PrintRef"/>
   </div>
 </template>
 <script setup>
 import { init } from "echarts";
 import { ref, onMounted, nextTick } from "vue";
-import html2canvas from "html2canvas";
-import vueEasyPrint from "vue-easy-print";
 import QrcodeVue from "qrcode.vue";
-const flage = ref(true);
+import PrintImage from "@/components/printImage.vue";
 const mainBar = ref();
 const divRef = ref();
 const allAlign = ref(null);
-
 const tableData1 = ref([
   { id: 10001, name: "Test1", role: "Develop", sex: "Man", age: 28, address: "test abc" },
   { id: 10002, name: "Test2", role: "Test", sex: "Women", age: 22, address: "Guangzhou" },
@@ -127,24 +122,9 @@ const myChart = () => {
   window.onresize = barChart.resize;
 };
 
-const printRef = ref();
-const imgSrc = ref();
-
+const PrintRef = ref();
 const clickImage = () => {
-  html2canvas(divRef.value)
-    .then((canvas) => {
-      let dataURL = canvas.toDataURL("image/png", 1);
-      imgSrc.value = dataURL;
-      nextTick(() => {
-        printRef.value.print();
-      });
-    })
-    .catch((e) => {
-      console.log("不知道为什么生成错误了");
-    })
-    .finally(() => {
-      console.log("已完成");
-    });
+  PrintRef.value.clickImage()
 };
 
 onMounted(() => {
