@@ -1,24 +1,60 @@
 <template>
   <div class="w1000 top">
-    <div>
+    <div ref="divRef">
       <div id="mainBar" ref="mainBar"></div>
+      <QrcodeVue :value="12345678" size="100" level="H"></QrcodeVue>
+      <vxe-toolbar>
+        <template #buttons>
+          <vxe-button @click="allAlign = 'left'">居左</vxe-button>
+          <vxe-button @click="allAlign = 'center'">居中</vxe-button>
+          <vxe-button @click="allAlign = 'right'">居右</vxe-button>
+        </template>
+      </vxe-toolbar>
+      <vxe-table :align="allAlign" :data="tableData1">
+        <vxe-column type="seq" width="60"></vxe-column>
+        <vxe-column field="name" title="Name"></vxe-column>
+        <vxe-column field="sex" title="Sex"></vxe-column>
+        <vxe-column field="age" title="Age"></vxe-column>
+      </vxe-table>
+      <a-breadcrumb>
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
+        <a-breadcrumb-item><a href="">Application List</a></a-breadcrumb-item>
+        <a-breadcrumb-item>An Application</a-breadcrumb-item>
+      </a-breadcrumb>
     </div>
     <a-row class="mt20">
       <a-button type="primary" @click="clickImage">生成图片</a-button>
-      <!-- <a-button type="primary" @click="printImage" class="ml20">打印图片</a-button> -->
-      <a-button type="primary" v-print="printSetting" class="ml20">打印图片</a-button>
     </a-row>
-    <a-row id="printId" class="mt20">
+    <vue-easy-print ref="printRef" tableShow style="display: none">
       <img :src="imgSrc" width="1000" />
-    </a-row>
+    </vue-easy-print>
   </div>
 </template>
 <script setup>
 import { init } from "echarts";
 import { ref, onMounted, nextTick } from "vue";
 import html2canvas from "html2canvas";
+import vueEasyPrint from "vue-easy-print";
+import QrcodeVue from "qrcode.vue";
 const flage = ref(true);
 const mainBar = ref();
+const divRef = ref();
+const allAlign = ref(null);
+
+const tableData1 = ref([
+  { id: 10001, name: "Test1", role: "Develop", sex: "Man", age: 28, address: "test abc" },
+  { id: 10002, name: "Test2", role: "Test", sex: "Women", age: 22, address: "Guangzhou" },
+  { id: 10003, name: "Test3", role: "PM", sex: "Man", age: 32, address: "Shanghai" },
+  {
+    id: 10004,
+    name: "Test4",
+    role: "Designer",
+    sex: "Women",
+    age: 24,
+    address: "Shanghai",
+  },
+]);
 const myChart = () => {
   let barChart = init(document.getElementById("mainBar"));
   const option = {
@@ -91,43 +127,24 @@ const myChart = () => {
   window.onresize = barChart.resize;
 };
 
-const  printSetting = ref( {
-        id: 'printMe',
-        beforeOpenCallback (vue) {
-          vue.pringLoading = true
-        },
-        openCallback (vue) {
-        },
-        closeCallback (vue) {
-          vue.pringLoading = false
-        }
-      })
-
+const printRef = ref();
 const imgSrc = ref();
-const clickImage = () => {
-  html2canvas(mainBar.value).then((canvas) => {
-    console.log(canvas);
-    let dataURL = canvas.toDataURL("image/png", 1);
-    imgSrc.value = dataURL;
-  });
-};
 
-const printImage = () => {
-  // print({
-  //   id: "printId",
-  //   extraHead: "我是打印头",
-  //   priview: false,
-  // });
-  print({
-    id: "printId",
-    beforeOpenCallback(vue) {
-      vue.pringLoading = true;
-    },
-    openCallback(vue) {},
-    closeCallback(vue) {
-      vue.pringLoading = false;
-    },
-  });
+const clickImage = () => {
+  html2canvas(divRef.value)
+    .then((canvas) => {
+      let dataURL = canvas.toDataURL("image/png", 1);
+      imgSrc.value = dataURL;
+      nextTick(() => {
+        printRef.value.print();
+      });
+    })
+    .catch((e) => {
+      console.log("不知道为什么生成错误了");
+    })
+    .finally(() => {
+      console.log("已完成");
+    });
 };
 
 onMounted(() => {
