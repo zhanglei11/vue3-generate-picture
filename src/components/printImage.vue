@@ -1,6 +1,6 @@
 <template>
   <vue-easy-print ref="printRef" tableShow style="display: none">
-    <img :src="imgSrc" width="1000" />
+    <img :src="imgSrc" />
   </vue-easy-print>
 </template>
 <script setup>
