@@ -1,6 +1,7 @@
 <template>
   <div class="w1000 top">
     <div ref="divRef">
+      <h1>打印HTML,先将其生成图片，再打印图片</h1>
       <div id="mainBar" ref="mainBar"></div>
       <QrcodeVue :value="12345678" size="100" level="H"></QrcodeVue>
       <vxe-toolbar>
@@ -138,8 +139,10 @@ onMounted(() => {
   padding-bottom: 20px;
 }
 #mainBar {
-  border: 1px solid #54aba5;
   width: 1000px;
   height: 500px;
+}
+h1{
+  text-align: center;
 }
 </style>

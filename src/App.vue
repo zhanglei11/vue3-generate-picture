@@ -6,8 +6,6 @@
 <script lang="ts" setup name="APP"></script>
 <style lang="less" scoped>
 #APP {
-  // height: 100vh;
-  // overflow: hidden;
   background:#efefef;
 }
 </style>
