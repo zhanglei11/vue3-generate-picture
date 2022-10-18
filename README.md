@@ -18,7 +18,7 @@
 #### 使用说明
 
 1. 对打印模块进行了封装，只需要引入组件printImage模块即可
-2. 针对打印两个重要的值，一个是body.document,我们采用ref,将ref传过来，一个事内置函数clickImage,也是通过组件的ref,由父组件调用子组件的方法触发
+2. 针对打印两个重要的值，一个是body.document,我们采用ref（divRef）,将ref传过来，一个事内置函数clickImage,也是通过组件的ref,由父组件调用子组件的方法触发
 3. 使用很方便
   `
   import PrintImage from "@/components/printImage.vue";
