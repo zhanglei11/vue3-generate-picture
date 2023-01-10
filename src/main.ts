@@ -8,7 +8,6 @@ const app = createApp(App)
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
-//引入echarts
 import * as echarts from 'echarts'
 app.config.globalProperties.$echarts = echarts
 app.use(router)
