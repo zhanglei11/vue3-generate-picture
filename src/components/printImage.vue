@@ -24,7 +24,7 @@ const clickImage = () => {
       })
     })
     .catch((e) => {
-      console.log('不知道为什么生成错误了')
+      console.log('不知道为什么生成错误')
     })
     .finally(() => {
       console.log('已完成')
